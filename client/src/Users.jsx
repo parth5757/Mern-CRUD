@@ -10,6 +10,14 @@ function Users () {
         .then(result => setUsers(result.data))
         .catch(err => console.log(err))
     }, [])
+
+    const handleDelete = (id) => {
+        console.log(`delete get started id = ${id}`)
+        axios.delete('http://localhost:3300/deleteUser/' + id)
+        .then(res => {console.log(res)
+            window.location.reload()})
+        .catch(err => res.json(err))
+    }
     return(
         <div className="d-flex vh-100 bg-primary justify-content-center align-items-center">
             <div className="w-50 bg-white rounded p-3">
@@ -32,7 +40,7 @@ function Users () {
                                         <td>{user.age}</td>
                                         <td>
                                             <Link to={`/update/${user._id}`} className="btn btn-success" >Update</Link>
-                                            <Link to={`/delete/${user._id}`} className="btn btn-danger">Delete</Link>
+                                            <button onClick={(e) => handleDelete(user._id)} className="btn btn-danger">Delete</button>
                                         </td>
                                       </tr>
                             })

@@ -65,7 +65,7 @@ function UpdateUser() {
                             className="form-control"
                             value={age}
                             onChange={(e) => setAge(e.target.value)}  // <-- Update the state on change
-                            required
+                            re
                         />
                     </div>
                     <button className="btn btn-success">Submit</button>

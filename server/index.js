@@ -6,7 +6,7 @@ const app = express()
 app.use(cors({
     origin: 'http://localhost:5173', // or '*' for all origins
     methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'],
-    allowedHeaders: ['Content-Type', 'Authorization'],
+        allowedHeaders: ['Content-Type', 'Authorization'],
     credentials: true
 }));
 
@@ -27,7 +27,7 @@ app.get('/getUser/:id', (req, res) => {
     .catch(err => res.json(err))
 })
 
-app.put('/updateUser/:id', (req, res) => {
+app.put('/  /:id', (req, res) => {
     const id = req.params.id;
     UserModel.findByIdAndUpdate({_id: id},{
         name: req.body.name,
@@ -43,8 +43,12 @@ app.post("/createUser", (req, res) => {
     .catch(err => res.json(err))
 })
 
-
-
+app.delete('/deleteUser/:id', (req, res) => {
+    const id = req.params.id;
+    UserModel.findByIdAndDelete({_id: id})
+    .then(users => res.json(users))
+    .catch(err => res.json(err))
+})
 app.listen(3300, () => {
     console.log("Server is Running")
 })
