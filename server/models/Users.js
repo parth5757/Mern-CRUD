@@ -6,5 +6,5 @@ const UserSchema = new mongoose.Schema({
     age: Number,
 })
 
-const UserModel = mongoose.connect("users", UserSchema)
-module.exports(UserModel)
+const UserModel = mongoose.model("users", UserSchema)
+module.exports = UserModel
